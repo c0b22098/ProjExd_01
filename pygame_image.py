@@ -9,6 +9,8 @@ def main():
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     tmr = 0
 
+    bg_img_flip = pg.transform.flip(bg_img, True, False)
+
     koukaton_img = pg.image.load("ex01/fig/3.png")
     koukaton_img_flip = pg.transform.flip(koukaton_img, True, False)
     koukaton_img_rotate = pg.transform.rotozoom(koukaton_img_flip, 10, 1.0)
@@ -18,7 +20,13 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-(tmr % 1600), 0])
+        bg_width = 3200
+        screen.blit(bg_img, [-(tmr % bg_width), 0])
+        screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width / 2, 0])
+        screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width, 0])
+        screen.blit(bg_img, [-(tmr % bg_width) + bg_width, 0])
+            
+        
 
         if tmr % 2 == 0:
             screen.blit(koukatons_list[0], (300, 200))
@@ -27,7 +35,7 @@ def main():
 
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(300)
 
 
 if __name__ == "__main__":
