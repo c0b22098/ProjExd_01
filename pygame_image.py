@@ -13,8 +13,14 @@ def main():
 
     koukaton_img = pg.image.load("ex01/fig/3.png")
     koukaton_img_flip = pg.transform.flip(koukaton_img, True, False)
-    koukaton_img_rotate = pg.transform.rotozoom(koukaton_img_flip, 10, 1.0)
-    koukatons_list = [koukaton_img_flip, koukaton_img_rotate]
+    
+    koukatons_list = []
+    nameraka_max = 70
+    for i in range(nameraka_max):
+        koukatons_list.append(pg.transform.rotozoom(koukaton_img_flip, 10 / nameraka_max * i, 1.0))
+    for i in range(nameraka_max, 0, -1):
+        koukatons_list.append(pg.transform.rotozoom(koukaton_img_flip, 10 / nameraka_max * i, 1.0))
+    
 
     while True:
         for event in pg.event.get():
@@ -28,10 +34,8 @@ def main():
             
         
 
-        if tmr % 2 == 0:
-            screen.blit(koukatons_list[0], (300, 200))
-        else:
-            screen.blit(koukatons_list[1], (300, 200))
+        
+        screen.blit(koukatons_list[tmr % (nameraka_max * 2)], (300, 200))
 
         pg.display.update()
         tmr += 1        
