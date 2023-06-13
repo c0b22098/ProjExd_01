@@ -15,7 +15,7 @@ def main():
     koukaton_img_flip = pg.transform.flip(koukaton_img, True, False)
     
     koukatons_list = []
-    nameraka_max = 700
+    nameraka_max = 70
     for i in range(nameraka_max):
         koukatons_list.append(pg.transform.rotozoom(koukaton_img_flip, 10.0 / nameraka_max * i, 1.0))
     for i in range(nameraka_max, 0, -1):
@@ -27,10 +27,10 @@ def main():
             if event.type == pg.QUIT: return
 
         bg_width = 3200
-        screen.blit(bg_img, [-((tmr / nameraka_max  * 70) % bg_width), 0])
-        screen.blit(bg_img_flip, [-((tmr / nameraka_max * 70) % bg_width) + bg_width / 2, 0])
-        screen.blit(bg_img_flip, [-((tmr / nameraka_max * 70) % bg_width) + bg_width, 0])
-        screen.blit(bg_img, [-((tmr / nameraka_max * 70) % bg_width) + bg_width, 0])
+        screen.blit(bg_img, [-(tmr % bg_width), 0])
+        screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width / 2, 0])
+        screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width, 0])
+        screen.blit(bg_img, [-(tmr % bg_width) + bg_width, 0])
             
         
 
@@ -39,7 +39,7 @@ def main():
 
         pg.display.update()
         tmr += 1        
-        clock.tick(70 * nameraka_max)
+        clock.tick(100)
 
 
 if __name__ == "__main__":
