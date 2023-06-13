@@ -8,6 +8,11 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     tmr = 0
+
+    koukaton_img = pg.image.load("ex01/fig/3.jpg")
+    koukaton_img_flip = pg.transform.flip(koukaton_img, False, True)
+
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
