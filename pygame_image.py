@@ -29,7 +29,6 @@ def main():
         bg_width = 3200
         screen.blit(bg_img, [-(tmr % bg_width), 0])
         screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width / 2, 0])
-        screen.blit(bg_img_flip, [-(tmr % bg_width) + bg_width, 0])
         screen.blit(bg_img, [-(tmr % bg_width) + bg_width, 0])
             
         
@@ -39,7 +38,7 @@ def main():
 
         pg.display.update()
         tmr += 1        
-        clock.tick(100)
+        clock.tick(300)
 
 
 if __name__ == "__main__":
